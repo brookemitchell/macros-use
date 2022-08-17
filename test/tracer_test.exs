@@ -1,7 +1,6 @@
 defmodule TracerTest do
   use ExUnit.Case
-  import Kernel, except: [def: 2]
-  import Tracer, only: [def: 2]
+  use Tracer
 
   import ExUnit.CaptureIO
 

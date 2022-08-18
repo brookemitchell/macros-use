@@ -4,8 +4,15 @@ defmodule TracerTest do
 
   import ExUnit.CaptureIO
 
+  def adds_posi_nums(a, b) when a > 0, do: a + b
   def puts_sum_3(a, b, c), do: a + b + c
   def add_list(list), do: Enum.reduce(list, 0, &(&1 + &2))
+
+  test "adds posi num" do
+    assert with_io(fn ->
+             adds_posi_nums(1, 2)
+           end) == {3, "==> call    adds_posi_nums(1, 2)\n<== result: 3\n"}
+  end
 
   test "puts sum 3" do
     assert with_io(fn ->
